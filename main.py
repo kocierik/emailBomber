@@ -18,7 +18,7 @@ def printMenu():
   
 def seleniumDefinition():
   options = Options()
-  #options.add_argument('--headless')
+  options.add_argument('--headless')
   return webdriver.Firefox(options=options)
   
 def gmailSignIn(driver, email, password, recipient, message, numberEmail):
