@@ -10,15 +10,19 @@ def printMenu():
   rows, cols = os.popen('stty size', 'r').read().split()
   print(datetime.now().strftime('%Y-%m-%d %H:%M:%S').rjust(int(cols)))
   print("TOOLS IN PYTHON")
-
+  senter = input("Enter senter mail: ") 
+  password = input("Enter senter password: ") 
+  recipient = input("Enter recipient mail: ") 
+  message = input("Enter the text to sent: ")
+  return senter,recipient,password
+  
 def seleniumDefinition():
   options = Options()
-  options.add_argument('--headless')
+  #options.add_argument('--headless')
   return webdriver.Firefox(options=options)
   
-
-def gmailSignIn(driver, email, password, numberEmail):
-    
+def gmailSignIn(driver, email, password, recipient, message, numberEmail):
+    driver.implicitly_wait(6)
     driver.get('https://stackoverflow.com/users/signup?ssrc=head&returnurl=%2fusers%2fstory%2fcurrent')
     driver.find_element_by_xpath('//*[@id="openid-buttons"]/button[1]').click()
 
@@ -38,15 +42,15 @@ def gmailSignIn(driver, email, password, numberEmail):
 
     driver.get('https://www.gmail.com/')
     for x in range(numberEmail):
-      time.sleep(5)
+      time.sleep(3)
       sendNewMail = driver.find_element_by_xpath('/html/body/div[7]/div[3]/div/div[2]/div[1]/div[1]/div[1]/div/div/div/div[1]/div/div')
       sendNewMail.click()
       time.sleep(5)
       mailG = driver.find_element_by_class_name("vO")
-      mailG.send_keys(email)
+      mailG.send_keys(recipient)
       time.sleep(2)
       mailText = driver.find_element_by_class_name("editable")
-      mailText.send_keys("bot message")
+      mailText.send_keys(message)
       time.sleep(1)
       btnSend = driver.find_element_by_class_name("aoO")
       btnSend.click()
@@ -54,14 +58,12 @@ def gmailSignIn(driver, email, password, numberEmail):
       time.sleep(5)
     driver.close()
 
-
 def main():
-  printMenu()
+  senter, recipient, password, message = printMenu()
+  print(senter, " ", recipient)
   driver = seleniumDefinition()
-  gmailSignIn(driver,"yourmail@gmail.com","yourpassword",1)
+  gmailSignIn(driver, senter, password, recipient,message, 3)
       
-  
-  
 
 if __name__ == "__main__":
     main()
