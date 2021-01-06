@@ -7,19 +7,41 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 import progressbar
+import sys
 
 
 def printMenu():
   rows, cols = os.popen('stty size', 'r').read().split()
   print(datetime.now().strftime('%Y-%m-%d %H:%M:%S').rjust(int(cols)))
   print("TOOLS IN PYTHON")
+
+  
+def personMailSender():
   senter = input("Enter senter mail: ") 
   password = input("Enter senter password: ") 
   recipient = input("Enter recipient mail: ") 
   message = input("Enter the text to sent: ")
   numberEmail = input("Enter the number email to sent: ")
-  return senter,recipient,password,message,numberEmail
+  driver = seleniumDefinition()
+  os.system("clear")
+  print(' senter: {}\n recipient: {}\n message: {}\n number Email {}\n\n'.format(senter,recipient,message,numberEmail))
+  print('Running...')
+  gmailSignIn(driver,senter,password,recipient,message,numberEmail)
   
+
+
+def randomEmailSender():
+  recipient = input("Enter recipient mail: ") 
+  message = input("Enter the text to sent: ")
+  numberEmail = input("Enter the number email to sent: ")
+  driver = seleniumDefinition()
+  os.system("clear")
+  print(' senter: XxEmailSpammer@gmail.com\n recipient: {}\n message: {}\n number Email: {}\n\n'.format(recipient,message,numberEmail))
+  print('Running...')
+  gmailSignIn(driver,"XxEmailSpammer@gmail.com","7^@mWx@dq8",recipient,message,numberEmail)
+
+
+
 def seleniumDefinition():
   options = Options()
   options.add_argument('--headless')
@@ -58,11 +80,11 @@ def gmailSignIn(driver, email, password, recipient, message, numberEmail):
 
       driver.get('https://www.gmail.com/')
       for x in range(int(numberEmail)):
-        time.sleep(5)
+        time.sleep(7)
         bar.update(65)
         sendNewMail = driver.find_element_by_xpath('/html/body/div[7]/div[3]/div/div[2]/div[1]/div[1]/div[1]/div/div/div/div[1]/div/div')
         sendNewMail.click()
-        time.sleep(7)
+        time.sleep(5)
         bar.update(73)
         mailG = driver.find_element_by_class_name("vO")
         mailG.send_keys(recipient)
@@ -76,16 +98,33 @@ def gmailSignIn(driver, email, password, recipient, message, numberEmail):
         btnSend.click()
         bar.update(100)
         print("email {} sent".format(x+1))
+  os.system("clear")
   driver.close()
 
+
+def userChoice():
+  choice = None
+  choice = input("Select an option to choose: ")
+  if choice == "1":
+    randomEmailSender()
+  elif choice == "2":
+    personMailSender()
+  elif choice == "3":
+      sys.exit()
+  else:
+     print("Insert a valid number...")
+     pass
+
+
 def main():
-  senter, recipient, password, message, numberEmail = printMenu()
-  os.system("clear")
-  print(' senter: {}\n recipient: {}\n message: {}\n number Email {}\n\n'.format(senter,recipient,message,numberEmail))
-  driver = seleniumDefinition()
-  print('Running...')
-  gmailSignIn(driver, senter, password, recipient,message, numberEmail)
-      
+  while(True):
+    print("EMAIL SPAMMER")
+    print("[1] Anonim email")
+    print("[2] Use a persona email")
+    print("[3] Exit")
+    userChoice()
+
+
 
 if __name__ == "__main__":
     main()
