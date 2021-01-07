@@ -98,6 +98,8 @@ def gmailSignIn(driver, email, password, recipient, message, numberEmail):
         btnSend.click()
         bar.update(100)
         print("email {} sent".format(x+1))
+  print("Completed...")
+  time.sleep(3)
   os.system("clear")
   driver.close()
 
@@ -118,9 +120,13 @@ def userChoice():
 
 def main():
   while(True):
-    print("EMAIL SPAMMER")
-    print("[1] Anonim email")
-    print("[2] Use a persona email")
+    print("   ____               _    __    ____                                    ")
+    print("  / __/ __ _  ___ _  (_)  / /   / __/ ___  ___ _  __ _   __ _  ___   ____")
+    print(" / _/  /  ' \/ _ `/ / /  / /   _\ \  / _ \/ _ `/ /  ' \ /  ' \/ -_) / __/")
+    print("/___/ /_/_/_/\_,_/ /_/  /_/   /___/ / .__/\_,_/ /_/_/_//_/_/_/\__/ /_/   ")
+    print("                                   /_/                                   ")
+    print("[1] Use a Random email")
+    print("[2] Use a Personal email")
     print("[3] Exit")
     userChoice()
 
