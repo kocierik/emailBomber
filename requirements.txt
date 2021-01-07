@@ -1,3 +1,2 @@
-geckodriver
 selenium
 progressbar2
