@@ -91,7 +91,7 @@ def gmailSignIn(driver, email, password, recipient, message, numberEmail):
         bar.update(89)
         time.sleep(5)
         mailText = driver.find_element_by_class_name("editable")
-        mailText.send_keys(message)
+        mailText.send_keys(message + " " + str(x) )
         time.sleep(2)
         bar.update(95)
         btnSend = driver.find_element_by_class_name("aoO")
@@ -129,8 +129,6 @@ def main():
     print("[2] Use a Personal email")
     print("[3] Exit")
     userChoice()
-
-
 
 if __name__ == "__main__":
     main()
