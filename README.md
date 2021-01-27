@@ -13,7 +13,7 @@ You need to install the browser driver from firefox:
 
 Launch it
 
-- <code>python3 main.py</code>
+- <code>python3 spammer.py</code>
 
 ### 
 ![launch program](https://github.com/kocierik/emailSpammer/blob/main/image.png)
