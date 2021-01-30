@@ -1,2 +1,3 @@
 selenium
 progressbar2
+geckodriver-autoinstaller

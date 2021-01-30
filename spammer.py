@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from time import sleep
 import progressbar
 import sys
+import geckodriver_autoinstaller
 
 
 def printMenu():
@@ -111,6 +112,7 @@ def gmailSignIn(driver, email, password, recipient, message, numberEmail):
 
 
 def userChoice():
+  geckodriver_autoinstaller.install()
   choice = None
   choice = input("Select an option to choose: ")
   if choice == "1":
