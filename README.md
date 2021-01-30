@@ -1,7 +1,7 @@
 ## Email spammer
 
 ### Requirements:
-To install the requirements using pip, run the following at the command-line:
+To install the requirements using pip, run the following command:
 
 - <code> pip install -r requirements.txt </code>
 
