@@ -1,6 +1,8 @@
 ## Email spammer
 
 ### Requirements:
+Operating system: Linux/macOS
+
 To install the requirements using pip, run the following commands:
 
 - <code> pip install -r requirements.txt </code>
