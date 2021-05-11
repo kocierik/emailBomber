@@ -1,7 +1,7 @@
-## Email spammer
+## Email Bomber
 
 ### Requirements:
-Operating system: Linux/macOS
+Operating system: Linux
 
 To install the requirements using pip, run the following commands:
 
