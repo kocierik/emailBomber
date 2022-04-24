@@ -1,7 +1,7 @@
 ## Email Bomber
 
 ### Requirements:
-Operating system: Linux
+OS: Linux
 
 To install the requirements using pip, run the following commands:
 
