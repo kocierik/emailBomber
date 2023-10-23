@@ -18,8 +18,8 @@ def printMenu():
 
   
 def personMailSender():
-  senter = input("Enter senter mail: ") 
-  password = input("Enter senter password: ") 
+  senter = input("Enter sender email address: ") 
+  password = input("Enter sender's email password: ") 
   recipient = input("Enter recipient mail: ") 
   message = input("Enter the text to sent: ")
   numberEmail = input("Enter the number email to sent: ")
